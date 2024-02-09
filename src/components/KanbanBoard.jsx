@@ -15,7 +15,11 @@ export default function KanbanBoard() {
           alignItems: "center",
           flexDirection: "row",
         }}
-      ></div>
+      >
+
+
+        
+      </div>
     </DragDropContext>
   );
 }
