@@ -1,7 +1,18 @@
-import { Container, background } from "@chakra-ui/react";
 import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
+import "./scroll.css";
+
+const Container = styled.div`
+  background-color: #f4f5f7;
+  border-radius: 2, 5px;
+  width: 300px;
+  height: 475px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border: 1px solid gray;
+`;
 
 const Title = styled.h3`
   padding: 8px;
@@ -19,17 +30,17 @@ const TaskList = styled.div`
 
 export default function Column({ title, tasks, id }) {
   return (
-    <Container>
-      <Title style={{ backgroundcolor: "lightblue", position: "stick" }}>
-        To Do
-      </Title>
+    <Container className="column">
+      <Title
+        style={{ backgroundcolor: "lightblue", position: "stick" }}
+      ></Title>
 
       <Droppable droppableId={id}>
         {(provided, snapshot) => {
           <TaskList
-            ref={provided.innerRef}
-            {...provided.droppableProps}
             isDraggingOver={snapshot.isDraggingOver}
+            {...provided.droppableProps}
+            ref={provided.innerRef}
           >
             {provided.placeholder}
           </TaskList>;
