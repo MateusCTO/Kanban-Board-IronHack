@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import KanbanBoard from "./components/KanbanBoard";
@@ -8,7 +9,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       {/* <Task
         task={{ id: 123, title: "Make a progress board application" }}
         index="1"

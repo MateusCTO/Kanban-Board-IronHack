@@ -2,48 +2,40 @@ import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import "./scroll.css";
-
-const Container = styled.div`
-  background-color: #f4f5f7;
-  border-radius: 2, 5px;
-  width: 300px;
-  height: 475px;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  border: 1px solid gray;
-`;
-
-const Title = styled.h3`
-  padding: 8px;
-  background-color: pink;
-  text-align: center;
-`;
-
-const TaskList = styled.div`
-  padding: 3px;
-  transition: background-color 0.2s ease;
-  background-color: #f4f5f7;
-  flex-grow: 1;
-  min-height: 100px;
-`;
+import { Heading, Container, Box } from "@chakra-ui/react";
 
 export default function Column({ title, tasks, id }) {
   return (
-    <Container className="column">
-      <Title
-        style={{ backgroundcolor: "lightblue", position: "stick" }}
-      ></Title>
+    <Container
+      className="column"
+      bgColor={"#f4f5f7"}
+      borderRadius={5}
+      w={300}
+      h={475}
+      overflowY={"scroll"}
+      border={"1px"}
+      borderColor={"gray"}
+    >
+      <Heading p={8} bgColor={"pink"} textAlign={"center"}>
+        {title}
+      </Heading>
 
       <Droppable droppableId={id}>
         {(provided, snapshot) => {
-          <TaskList
-            isDraggingOver={snapshot.isDraggingOver}
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
-            {provided.placeholder}
-          </TaskList>;
+          return (
+            <Box
+              p={3}
+              transition={"background-color 0.2s ease"}
+              bgColor={"#f4f5f7"}
+              flexGrow={1}
+              minW={100}
+              isDraggingOver={snapshot.isDraggingOver}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {provided.placeholder}
+            </Box>
+          );
         }}
       </Droppable>
     </Container>

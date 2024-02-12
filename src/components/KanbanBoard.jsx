@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { Flex } from "@chakra-ui/react";
 import Column from "./Column";
 
 export default function KanbanBoard() {
@@ -9,16 +10,9 @@ export default function KanbanBoard() {
   return (
     <DragDropContext>
       <h2 style={{ textAlign: "center" }}>PROGRESS BORAD</h2>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: "row",
-        }}
-      >
+      <Flex justify={"space-between"} alignItems={"center"} direction={"row"}>
         <Column title={"TO DO"} tasks={incomplete} id={"1"} />
-      </div>
+      </Flex>
     </DragDropContext>
   );
 }
